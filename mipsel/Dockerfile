@@ -5,7 +5,7 @@ RUN dpkg --add-architecture mipsel && \
 	apt-get -y install \
 	build-essential \
 	dpkg-cross \
-	g++-mips-linux-gnu \
+	g++-mipsel-linux-gnu \
 	git \
 	bison \
 	flex \

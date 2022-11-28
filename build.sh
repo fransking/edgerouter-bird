@@ -3,6 +3,7 @@
 export BIRD_VERSION=2.0.8
 
 rm -rf out
+mkdir out
 
 DOCKER_BUILDKIT=1 docker build -o out/bird-$BIRD_VERSION/mips mips --build-arg BIRD_VERSION=${BIRD_VERSION}
 DOCKER_BUILDKIT=1 docker build -o out/bird-$BIRD_VERSION/mipsel mipsel --build-arg BIRD_VERSION=${BIRD_VERSION}

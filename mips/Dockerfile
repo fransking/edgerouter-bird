@@ -24,6 +24,7 @@ RUN wget https://bird.network.cz/download/bird-$BIRD_VERSION.tar.gz --no-check-c
 FROM scratch AS export
 
 ARG BIRD_VERSION
+WORKDIR /
 
 COPY --from=build /bird-$BIRD_VERSION/bird .
 COPY --from=build /bird-$BIRD_VERSION/birdcl .
