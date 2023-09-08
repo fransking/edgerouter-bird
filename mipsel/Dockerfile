@@ -1,5 +1,12 @@
 FROM debian:stretch-slim AS build
 
+# Update stretch repositories
+RUN sed -i -e 's/deb.debian.org/archive.debian.org/g' \
+           -e 's|security.debian.org|archive.debian.org/|g' \
+           -e '/stretch-updates/d' /etc/apt/sources.list
+
+RUN apt-get update
+
 RUN dpkg --add-architecture mipsel && \
 	apt-get update && \
 	apt-get -y install \
@@ -24,6 +31,7 @@ RUN wget https://bird.network.cz/download/bird-$BIRD_VERSION.tar.gz --no-check-c
 FROM scratch AS export
 
 ARG BIRD_VERSION
+WORKDIR /
 
 COPY --from=build /bird-$BIRD_VERSION/bird .
 COPY --from=build /bird-$BIRD_VERSION/birdcl .

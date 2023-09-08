@@ -1,5 +1,12 @@
 FROM debian:stretch-slim AS build
 
+# Update stretch repositories
+RUN sed -i -e 's/deb.debian.org/archive.debian.org/g' \
+           -e 's|security.debian.org|archive.debian.org/|g' \
+           -e '/stretch-updates/d' /etc/apt/sources.list
+
+RUN apt-get update
+
 RUN dpkg --add-architecture mips && \
 	apt-get update && \
 	apt-get -y install \
