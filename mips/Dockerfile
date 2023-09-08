@@ -25,7 +25,7 @@ ARG BIRD_VERSION
 RUN wget https://bird.network.cz/download/bird-$BIRD_VERSION.tar.gz --no-check-certificate && \
 	tar xzfv bird-$BIRD_VERSION.tar.gz && \
 	cd bird-$BIRD_VERSION && \	
-	./configure --host mips-linux-gnu --prefix=/config --sysconfdir=/config --runstatedir=/run --disable-client --disable-mpls_kernel && \
+	./configure --host mips-linux-gnu --prefix=/config --sysconfdir=/config --runstatedir=/run --disable-client && \
 	make
 
 FROM scratch AS export
