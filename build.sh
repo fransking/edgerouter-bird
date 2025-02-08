@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export BIRD_VERSION=2.13
+export BIRD_VERSION=2.16.1
 
 rm -rf out
 mkdir out
